@@ -31,18 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.PlayButton = new System.Windows.Forms.Button();
             this.Option = new System.Windows.Forms.Button();
+            this.Quit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PlayButton
             // 
             this.PlayButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PlayButton.BackgroundImage")));
             this.PlayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PlayButton.Location = new System.Drawing.Point(169, 161);
+            this.PlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.PlayButton.Location = new System.Drawing.Point(318, 113);
             this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(136, 37);
+            this.PlayButton.Size = new System.Drawing.Size(77, 71);
             this.PlayButton.TabIndex = 0;
-            this.PlayButton.Text = "PLAY";
-            this.PlayButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.PlayButton.Text = "\r\nPLAY";
+            this.PlayButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.PlayButton.UseVisualStyleBackColor = true;
             this.PlayButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -50,24 +52,41 @@
             // 
             this.Option.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Option.BackgroundImage")));
             this.Option.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Option.Location = new System.Drawing.Point(12, 222);
+            this.Option.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Option.Location = new System.Drawing.Point(21, 265);
             this.Option.Name = "Option";
-            this.Option.Size = new System.Drawing.Size(146, 36);
+            this.Option.Size = new System.Drawing.Size(55, 75);
             this.Option.TabIndex = 1;
             this.Option.Text = "OPTION";
             this.Option.UseVisualStyleBackColor = true;
             this.Option.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // Quit
+            // 
+            this.Quit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Quit.BackgroundImage")));
+            this.Quit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Quit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Quit.Location = new System.Drawing.Point(568, 338);
+            this.Quit.Name = "Quit";
+            this.Quit.Size = new System.Drawing.Size(93, 32);
+            this.Quit.TabIndex = 2;
+            this.Quit.Text = "QUIT";
+            this.Quit.UseVisualStyleBackColor = true;
+            this.Quit.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(475, 270);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(665, 433);
+            this.Controls.Add(this.Quit);
             this.Controls.Add(this.Option);
             this.Controls.Add(this.PlayButton);
             this.Name = "Menu";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
 
         }
@@ -76,6 +95,7 @@
 
         private System.Windows.Forms.Button PlayButton;
         private System.Windows.Forms.Button Option;
+        private System.Windows.Forms.Button Quit;
     }
 }
 

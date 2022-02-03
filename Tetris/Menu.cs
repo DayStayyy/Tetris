@@ -26,6 +26,18 @@ namespace Tetris
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            Option obj2 = new Option();
+            obj2.Show();
+            this.Hide();
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
 
         }
     }

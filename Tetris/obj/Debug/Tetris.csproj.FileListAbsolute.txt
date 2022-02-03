@@ -10,3 +10,4 @@ C:\Users\adrie\Cours\Tetris\Tetris\Tetris\obj\Debug\Tetris.exe
 C:\Users\adrie\Cours\Tetris\Tetris\Tetris\obj\Debug\Tetris.pdb
 C:\Users\adrie\Cours\Tetris\Tetris\Tetris\obj\Debug\Tetris.Game.resources
 C:\Users\adrie\Cours\Tetris\Tetris\Tetris\obj\Debug\Tetris.Menu.resources
+C:\Users\adrie\Cours\Tetris\Tetris\Tetris\obj\Debug\Tetris.Option.resources
