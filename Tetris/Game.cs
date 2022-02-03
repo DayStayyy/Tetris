@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace Tetris
 {
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
         Shape currentShape;
         Shape nextShape;
         Timer timer = new Timer();
-        public Form1()
+        public Game()
         {
             InitializeComponent();
                         
@@ -39,10 +39,9 @@ namespace Tetris
 
             // Create Bitmap with picture box's size
             canvasBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-
             canvasGraphics = Graphics.FromImage(canvasBitmap);
 
-            canvasGraphics.FillRectangle(Brushes.LightGray, 0, 0, canvasBitmap.Width, canvasBitmap.Height);
+            canvasGraphics.FillRectangle(Brushes.Pink, 0, 0, canvasBitmap.Width, canvasBitmap.Height);
 
             // Load bitmap into picture box
             pictureBox1.Image = canvasBitmap;
@@ -145,13 +144,14 @@ namespace Tetris
         {
             workingBitmap = new Bitmap(canvasBitmap);
             workingGraphics = Graphics.FromImage(workingBitmap);
+            
 
             for (int i = 0; i < currentShape.Width; i++)
             {
                 for (int j = 0; j < currentShape.Height; j++)
                 {
                     if (currentShape.Dots[j, i] == 1)
-                        workingGraphics.FillRectangle(Brushes.Black, (currentX + i) * dotSize, (currentY + j) * dotSize, dotSize, dotSize);
+                        workingGraphics.FillRectangle(Brushes.Red, (currentX + i) * dotSize, (currentY + j) * dotSize, dotSize, dotSize);
                 }
             }
 
@@ -247,9 +247,10 @@ namespace Tetris
             {
                 for (int j = 0; j < canvasHeight; j++)
                 {
+                    Image imageFile = Image.FromFile("C:\\Users\\adrie\\Cours\\Tetris\\Tetris\\Tetris\\barre.png");
                     canvasGraphics = Graphics.FromImage(canvasBitmap);
                     canvasGraphics.FillRectangle(
-                        canvasDotArray[i, j] == 1 ? Brushes.Black : Brushes.LightGray,
+                        canvasDotArray[i, j] == 1 ? Brushes.Blue : Brushes.Pink,
                         i * dotSize, j * dotSize, dotSize, dotSize
                         );
                 }
@@ -263,12 +264,12 @@ namespace Tetris
         private Shape getNextShape()
         {
             var shape = getRandomShapeWithCenterAligned();
-
+ 
             // Codes to show the next shape in the side panel
             nextShapeBitmap = new Bitmap(6 * dotSize, 6 * dotSize);
             nextShapeGraphics = Graphics.FromImage(nextShapeBitmap);
 
-            nextShapeGraphics.FillRectangle(Brushes.LightGray, 0, 0, nextShapeBitmap.Width, nextShapeBitmap.Height);
+
 
             // Find the ideal position for the shape in the side panel
             var startX = (6 - shape.Width) / 2;
@@ -289,5 +290,6 @@ namespace Tetris
 
             return shape;
         }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Tetris
 {
-    partial class Form1
+    partial class Game
     {
         /// <summary>
         /// Required designer variable.
@@ -41,17 +41,18 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(496, 188);
+            this.label3.Location = new System.Drawing.Point(441, 150);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 37);
+            this.label3.Size = new System.Drawing.Size(74, 31);
             this.label3.TabIndex = 8;
             this.label3.Text = "Next";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(503, 228);
+            this.pictureBox2.Location = new System.Drawing.Point(447, 182);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(198, 180);
+            this.pictureBox2.Size = new System.Drawing.Size(176, 144);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
@@ -59,9 +60,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(496, 100);
+            this.label2.Location = new System.Drawing.Point(441, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 37);
+            this.label2.Size = new System.Drawing.Size(117, 31);
             this.label2.TabIndex = 5;
             this.label2.Text = "Level: 0";
             // 
@@ -69,31 +70,33 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(493, 36);
+            this.label1.Location = new System.Drawing.Point(438, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 58);
+            this.label1.Size = new System.Drawing.Size(183, 48);
             this.label1.TabIndex = 6;
             this.label1.Text = "Score: 0";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(24, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(21, 29);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(452, 620);
+            this.pictureBox1.Size = new System.Drawing.Size(402, 496);
             this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox1.TabStop = false;            
             // 
-            // Form1
+            // Game
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 687);
+            this.ClientSize = new System.Drawing.Size(646, 550);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Game";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
