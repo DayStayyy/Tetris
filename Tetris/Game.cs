@@ -9,10 +9,11 @@ namespace Tetris
         Shape currentShape;
         Shape nextShape;
         Timer timer = new Timer();
+        System.Media.SoundPlayer sp;
         public Game()
         {
             InitializeComponent();
-                        
+            playMusic("tetris");
             loadCanvas();
 
             currentShape = getRandomShapeWithCenterAligned();
@@ -106,6 +107,7 @@ namespace Tetris
             if (currentY < 0)
             {
                 timer.Stop();
+                sp.Stop();
                 MessageBox.Show("Game Over");
                 Application.Restart();
             }
@@ -202,6 +204,8 @@ namespace Tetris
         }
 
         int score;
+        int indexMusic = 0;
+        String[] arrMusic = new String[] {"tetris","tetrisFast","tetrisMetal","rock"};
         public void clearFilledRowsAndUpdateScore()
         {
             // check through each rows
@@ -218,8 +222,15 @@ namespace Tetris
                 {
                     // update score and level values and labels
                     score+=20;
+                    if(score/125 != indexMusic)
+                    {
+                        indexMusic = score / 125;
+                        sp.Stop();
+                        playMusic(arrMusic[indexMusic]);
+
+                    }
                     label1.Text = "Score: " + score;
-                    label2.Text = "Level: " + score / 10;
+                    label2.Text = "Level: " + score / 20;
                     // increase the speed 
                     if(timer.Interval - score <= 0)
                     {
@@ -228,6 +239,7 @@ namespace Tetris
                     {
                      timer.Interval -= score;
                     }
+                    
 
                     // update the dot array based on the check
                     for (j = 0; j < canvasWidth; j++)
@@ -247,7 +259,7 @@ namespace Tetris
             {
                 for (int j = 0; j < canvasHeight; j++)
                 {
-                    Image imageFile = Image.FromFile("C:\\Users\\adrie\\Cours\\Tetris\\Tetris\\Tetris\\barre.png");
+                    //Image imageFile = Image.FromFile("C:\\Users\\adrie\\Cours\\Tetris\\Tetris\\Tetris\\barre.png");
                     canvasGraphics = Graphics.FromImage(canvasBitmap);
                     canvasGraphics.FillRectangle(
                         canvasDotArray[i, j] == 1 ? Brushes.Blue : Brushes.Pink,
@@ -257,6 +269,11 @@ namespace Tetris
             }
 
             pictureBox1.Image = canvasBitmap;
+        }
+        private void playMusic(String name) 
+        {
+            sp = new System.Media.SoundPlayer($@"..\..\src\{name}.wav");
+            sp.PlayLooping();
         }
 
         Bitmap nextShapeBitmap;

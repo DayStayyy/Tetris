@@ -15,6 +15,12 @@ namespace Tetris
         public Menu()
         {
             InitializeComponent();
+            // System.Media.SoundPlayer sp = new System.Media.SoundPlayer(@"C:\Users\adrie\Cours\Tetris\Tetris\Tetris\src\rock.wav");
+            System.Media.SoundPlayer sp = new System.Media.SoundPlayer(@"..\..\src\rock.wav");
+
+            sp.PlayLooping();
+
+            //sp.Play();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,7 +34,7 @@ namespace Tetris
         {
             Option obj2 = new Option();
             obj2.Show();
-            this.Hide();
+            
         }
 
         private void button1_Click_2(object sender, EventArgs e)
