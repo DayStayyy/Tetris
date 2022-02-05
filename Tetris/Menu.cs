@@ -12,11 +12,15 @@ namespace Tetris
 {
     public partial class Menu : Form
     {
+        String[] arrMusic = new String[] { "tetris", "tetrisFast", "tetrisMetal", "rock" };
         public Menu()
         {
+
             InitializeComponent();
+            Random rnd = new Random();
+            int number = rnd.Next(0, 4);
             // System.Media.SoundPlayer sp = new System.Media.SoundPlayer(@"C:\Users\adrie\Cours\Tetris\Tetris\Tetris\src\rock.wav");
-            System.Media.SoundPlayer sp = new System.Media.SoundPlayer(@"..\..\src\rock.wav");
+            System.Media.SoundPlayer sp = new System.Media.SoundPlayer($@"..\..\src\{arrMusic[number]}.wav");
 
             sp.PlayLooping();
 
