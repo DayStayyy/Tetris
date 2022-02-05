@@ -33,6 +33,7 @@ namespace Tetris
         int canvasHeight = 25;
         int[,] canvasDotArray;
         int dotSize = 20;
+        DateTime startTime = DateTime.Now;
         private void loadCanvas()
         {
             // Resize the picture box based on the dotsize and canvas size
@@ -58,7 +59,7 @@ namespace Tetris
             {
                 canvasGraphics.DrawLine(pen, 0, i * 20, 64 * 20, i * 20);
             }
-            for (int i = 0; i < canvasWidth; i++)
+            for (int i = 0; i < canvasWidth+1; i++)
             {
                 canvasGraphics.DrawLine(pen, i * 20, 0, i * 20, 64 * 20);
             }
@@ -81,6 +82,7 @@ namespace Tetris
         Graphics workingGraphics;
         private void Timer_Tick(object sender, EventArgs e)
         {
+            label2.Text = $"Timer : {DateTime.Now.Subtract(startTime).ToString("ss")} sec";
             var isMoveSuccess = moveShapeIfPossible(moveDown: 1);
             // if shape reached bottom or touched any other shapes
             if (!isMoveSuccess)
@@ -275,7 +277,6 @@ namespace Tetris
 
                     }
                     label1.Text = "Score: " + score;
-                    label2.Text = "Level: " + score / 20;
                     // increase the speed 
                     if(timer.Interval - score <= 0)
                     {
@@ -353,6 +354,16 @@ namespace Tetris
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
