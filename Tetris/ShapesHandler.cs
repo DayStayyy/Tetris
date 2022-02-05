@@ -13,6 +13,7 @@ namespace Tetris
             shapesArray = new Shape[]
                 {
                     new Shape {
+                        Id = 0,
                         Width = 2,
                         Height = 2,
                         Dots = new int[,]
@@ -22,6 +23,7 @@ namespace Tetris
                         }
                     },
                     new Shape {
+                        Id = 1,
                         Width = 1,
                         Height = 4,
                         Dots = new int[,]
@@ -33,6 +35,7 @@ namespace Tetris
                         }
                     },
                     new Shape {
+                        Id = 2,
                         Width = 3,
                         Height = 2,
                         Dots = new int[,]
@@ -42,6 +45,7 @@ namespace Tetris
                         }
                     },
                     new Shape {
+                        Id = 3,
                         Width = 3,
                         Height = 2,
                         Dots = new int[,]
@@ -51,6 +55,7 @@ namespace Tetris
                         }
                     },
                     new Shape {
+                        Id = 4,
                         Width = 3,
                         Height = 2,
                         Dots = new int[,]
@@ -60,6 +65,7 @@ namespace Tetris
                         }
                     },
                     new Shape {
+                        Id = 5,
                         Width = 3,
                         Height = 2,
                         Dots = new int[,]
@@ -69,6 +75,7 @@ namespace Tetris
                         }
                     },
                     new Shape {
+                        Id = 6,
                         Width = 3,
                         Height = 2,
                         Dots = new int[,]

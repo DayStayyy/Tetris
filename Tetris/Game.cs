@@ -22,14 +22,15 @@ namespace Tetris
             timer.Tick += Timer_Tick;
             timer.Interval = 500;
             timer.Start();
-            
+
             this.KeyDown += Form1_KeyDown;
         }
-        
+
         Bitmap canvasBitmap;
         Graphics canvasGraphics;
-        int canvasWidth = 15;
-        int canvasHeight = 20;
+        Pen pen = new Pen(Color.LightPink, 3);
+        int canvasWidth = 20;
+        int canvasHeight = 25;
         int[,] canvasDotArray;
         int dotSize = 20;
         private void loadCanvas()
@@ -46,9 +47,21 @@ namespace Tetris
 
             // Load bitmap into picture box
             pictureBox1.Image = canvasBitmap;
-            
+
             // Initialize canvas dot array. by default all elements are zero
             canvasDotArray = new int[canvasWidth, canvasHeight];
+            drawLines();
+        }
+        private void drawLines()
+        {
+            for (int i = 0; i < canvasHeight; i++)
+            {
+                canvasGraphics.DrawLine(pen, 0, i * 20, 64 * 20, i * 20);
+            }
+            for (int i = 0; i < canvasWidth; i++)
+            {
+                canvasGraphics.DrawLine(pen, i * 20, 0, i * 20, 64 * 20);
+            }
         }
 
         int currentX;
@@ -56,7 +69,7 @@ namespace Tetris
         private Shape getRandomShapeWithCenterAligned()
         {
             var shape = ShapesHandler.GetRandomShape();
-            
+
             // Calculate the x and y values as if the shape lies in the center
             currentX = 7;
             currentY = -shape.Height;
@@ -69,7 +82,6 @@ namespace Tetris
         private void Timer_Tick(object sender, EventArgs e)
         {
             var isMoveSuccess = moveShapeIfPossible(moveDown: 1);
-
             // if shape reached bottom or touched any other shapes
             if (!isMoveSuccess)
             {
@@ -77,12 +89,12 @@ namespace Tetris
                 canvasBitmap = new Bitmap(workingBitmap);
 
                 updateCanvasDotArrayWithCurrentShape();
-
                 // get next shape
                 currentShape = nextShape;
                 nextShape = getNextShape();
-                
+
                 clearFilledRowsAndUpdateScore();
+                drawLines();
             }
         }
 
@@ -94,23 +106,25 @@ namespace Tetris
                 {
                     if (currentShape.Dots[j, i] == 1)
                     {
-                        checkIfGameOver();
-
+                        if (checkIfGameOver()) { return; }
+                        drawLines();
                         canvasDotArray[currentX + i, currentY + j] = 1;
                     }
                 }
             }
         }
 
-        private void checkIfGameOver()
+        private bool checkIfGameOver()
         {
             if (currentY < 0)
             {
                 timer.Stop();
                 sp.Stop();
                 MessageBox.Show("Game Over");
-                Application.Restart();
+                this.Close();
+                return true;
             }
+            return false;
         }
 
         // returns if it reaches the bottom or touches any other blocks
@@ -141,9 +155,38 @@ namespace Tetris
 
             return true;
         }
-
+        private Brush getShapeColor(Shape shape)
+        {
+            if(shape.Id == 0)
+            {
+                return Brushes.Blue;
+            } else if (shape.Id == 1)
+            {
+                return Brushes.Green;
+            } else if(shape.Id == 2)
+            {
+                return Brushes.Purple;
+            }
+            else if (shape.Id == 3)
+            {
+                return Brushes.Yellow;
+            }
+            else if (shape.Id == 4)
+            {
+                return Brushes.DarkTurquoise;
+            }
+            else if (shape.Id == 5)
+            {
+                return Brushes.Red;
+            }
+            else
+            {
+                return Brushes.Orange;
+            }
+        }
         private void drawShape()
         {
+            drawLines();
             workingBitmap = new Bitmap(canvasBitmap);
             workingGraphics = Graphics.FromImage(workingBitmap);
             
@@ -153,11 +196,12 @@ namespace Tetris
                 for (int j = 0; j < currentShape.Height; j++)
                 {
                     if (currentShape.Dots[j, i] == 1)
-                        workingGraphics.FillRectangle(Brushes.Red, (currentX + i) * dotSize, (currentY + j) * dotSize, dotSize, dotSize);
+                        workingGraphics.FillRectangle(getShapeColor(currentShape), (currentX + i) * dotSize, (currentY + j) * dotSize, dotSize, dotSize);
                 }
             }
 
             pictureBox1.Image = workingBitmap;
+            
         }
         
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -181,7 +225,7 @@ namespace Tetris
 
                 // move shape down faster
                 case Keys.Down:
-                    horizontalMove+=2;
+                    horizontalMove++;
                     break;
                 case Keys.Space:
                     horizontalMove = canvasHeight-currentY-currentShape.Height;
@@ -221,10 +265,10 @@ namespace Tetris
                 if (j == -1)
                 {
                     // update score and level values and labels
-                    score+=20;
-                    if(score/125 != indexMusic)
+                    score+=10;
+                    if(score/125 != indexMusic && score / 125 < 4)
                     {
-                        indexMusic = score / 125;
+                        indexMusic = score / 100;
                         sp.Stop();
                         playMusic(arrMusic[indexMusic]);
 
@@ -237,7 +281,7 @@ namespace Tetris
                         timer.Interval = 1;
                     } else
                     {
-                     timer.Interval -= score;
+                     timer.Interval -= 10;
                     }
                     
 
@@ -259,10 +303,9 @@ namespace Tetris
             {
                 for (int j = 0; j < canvasHeight; j++)
                 {
-                    //Image imageFile = Image.FromFile("C:\\Users\\adrie\\Cours\\Tetris\\Tetris\\Tetris\\barre.png");
                     canvasGraphics = Graphics.FromImage(canvasBitmap);
                     canvasGraphics.FillRectangle(
-                        canvasDotArray[i, j] == 1 ? Brushes.Blue : Brushes.Pink,
+                        canvasDotArray[i, j] == 1 ? Brushes.Transparent : Brushes.Pink,
                         i * dotSize, j * dotSize, dotSize, dotSize
                         );
                 }
@@ -307,6 +350,5 @@ namespace Tetris
 
             return shape;
         }
-
     }
 }

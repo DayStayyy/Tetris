@@ -3,6 +3,7 @@
     class Shape
     {
         public int Width;
+        public int Id;
         public int Height;
         public int[,] Dots;
 

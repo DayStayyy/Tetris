@@ -19,12 +19,10 @@ namespace Tetris
             InitializeComponent();
             Random rnd = new Random();
             int number = rnd.Next(0, 4);
-            // System.Media.SoundPlayer sp = new System.Media.SoundPlayer(@"C:\Users\adrie\Cours\Tetris\Tetris\Tetris\src\rock.wav");
             System.Media.SoundPlayer sp = new System.Media.SoundPlayer($@"..\..\src\{arrMusic[number]}.wav");
-
             sp.PlayLooping();
 
-            //sp.Play();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
