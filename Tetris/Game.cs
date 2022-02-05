@@ -28,7 +28,7 @@ namespace Tetris
 
         Bitmap canvasBitmap;
         Graphics canvasGraphics;
-        Pen pen = new Pen(Color.LightPink, 3);
+        Pen pen = new Pen(Color.Black, 3);
         int canvasWidth = 20;
         int canvasHeight = 25;
         int[,] canvasDotArray;
@@ -43,7 +43,7 @@ namespace Tetris
             canvasBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             canvasGraphics = Graphics.FromImage(canvasBitmap);
 
-            canvasGraphics.FillRectangle(Brushes.Pink, 0, 0, canvasBitmap.Width, canvasBitmap.Height);
+            canvasGraphics.FillRectangle(Brushes.Pink , 0, 0, canvasBitmap.Width, canvasBitmap.Height);
 
             // Load bitmap into picture box
             pictureBox1.Image = canvasBitmap;
@@ -104,11 +104,11 @@ namespace Tetris
             {
                 for (int j = 0; j < currentShape.Height; j++)
                 {
-                    if (currentShape.Dots[j, i] == 1)
+                    if (currentShape.Dots[j, i] >= 1)
                     {
                         if (checkIfGameOver()) { return; }
                         drawLines();
-                        canvasDotArray[currentX + i, currentY + j] = 1;
+                        canvasDotArray[currentX + i, currentY + j] = currentShape.Dots[j, i];
                     }
                 }
             }
@@ -143,7 +143,7 @@ namespace Tetris
             {
                 for (int j = 0; j < currentShape.Height; j++)
                 {
-                    if (newY + j > 0 && canvasDotArray[newX + i, newY + j] == 1 && currentShape.Dots[j, i] == 1)
+                    if (newY + j > 0 && canvasDotArray[newX + i, newY + j] >= 1 && currentShape.Dots[j, i] >= 1)
                         return false;
                 }
             }
@@ -155,27 +155,28 @@ namespace Tetris
 
             return true;
         }
-        private Brush getShapeColor(Shape shape)
+        private Brush getShapeColor(int id)
         {
-            if(shape.Id == 0)
+            id -= 1;
+            if (id == 0)
             {
                 return Brushes.Blue;
-            } else if (shape.Id == 1)
+            } else if (id == 1)
             {
                 return Brushes.Green;
-            } else if(shape.Id == 2)
+            } else if(id == 2)
             {
                 return Brushes.Purple;
             }
-            else if (shape.Id == 3)
+            else if (id == 3)
             {
                 return Brushes.Yellow;
             }
-            else if (shape.Id == 4)
+            else if (id == 4)
             {
                 return Brushes.DarkTurquoise;
             }
-            else if (shape.Id == 5)
+            else if (id == 5)
             {
                 return Brushes.Red;
             }
@@ -195,8 +196,8 @@ namespace Tetris
             {
                 for (int j = 0; j < currentShape.Height; j++)
                 {
-                    if (currentShape.Dots[j, i] == 1)
-                        workingGraphics.FillRectangle(getShapeColor(currentShape), (currentX + i) * dotSize, (currentY + j) * dotSize, dotSize, dotSize);
+                    if (currentShape.Dots[j, i] > 0)
+                        workingGraphics.FillRectangle(getShapeColor(currentShape.Dots[j, i]), (currentX + i) * dotSize, (currentY + j) * dotSize, dotSize, dotSize);
                 }
             }
 
@@ -305,7 +306,7 @@ namespace Tetris
                 {
                     canvasGraphics = Graphics.FromImage(canvasBitmap);
                     canvasGraphics.FillRectangle(
-                        canvasDotArray[i, j] == 1 ? Brushes.Transparent : Brushes.Pink,
+                        canvasDotArray[i, j] > 0 ? getShapeColor(canvasDotArray[i, j]) : Brushes.Pink,
                         i * dotSize, j * dotSize, dotSize, dotSize
                         );
                 }
@@ -340,7 +341,7 @@ namespace Tetris
                 for (int j = 0; j < shape.Width; j++)
                 {
                     nextShapeGraphics.FillRectangle(
-                        shape.Dots[i, j] == 1 ? Brushes.Black : Brushes.LightGray,
+                        shape.Dots[i, j] >= 1 ? getShapeColor(shape.Dots[i, j]) : Brushes.Transparent,
                         (startX + j) * dotSize, (startY + i) * dotSize, dotSize, dotSize);
                 }
             }
@@ -349,6 +350,11 @@ namespace Tetris
             pictureBox2.Image = nextShapeBitmap;
 
             return shape;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

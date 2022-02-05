@@ -28,10 +28,10 @@ namespace Tetris
                         Height = 4,
                         Dots = new int[,]
                         {
-                            { 1 },
-                            { 1 },
-                            { 1 },
-                            { 1 }
+                            { 2 },
+                            { 2 },
+                            { 2 },
+                            { 2 }
                         }
                     },
                     new Shape {
@@ -40,8 +40,8 @@ namespace Tetris
                         Height = 2,
                         Dots = new int[,]
                         {
-                            { 0, 1, 0 },
-                            { 1, 1, 1 }
+                            { 0, 3, 0 },
+                            { 3, 3, 3 }
                         }
                     },
                     new Shape {
@@ -50,8 +50,8 @@ namespace Tetris
                         Height = 2,
                         Dots = new int[,]
                         {
-                            { 0, 0, 1 },
-                            { 1, 1, 1 }
+                            { 0, 0, 4 },
+                            { 4, 4, 4 }
                         }
                     },
                     new Shape {
@@ -60,8 +60,8 @@ namespace Tetris
                         Height = 2,
                         Dots = new int[,]
                         {
-                            { 1, 0, 0 },
-                            { 1, 1, 1 }
+                            { 5, 0, 0 },
+                            { 5, 5, 5 }
                         }
                     },
                     new Shape {
@@ -70,8 +70,8 @@ namespace Tetris
                         Height = 2,
                         Dots = new int[,]
                         {
-                            { 1, 1, 0 },
-                            { 0, 1, 1 }
+                            { 6, 6, 0 },
+                            { 0, 6, 6 }
                         }
                     },
                     new Shape {
@@ -80,8 +80,8 @@ namespace Tetris
                         Height = 2,
                         Dots = new int[,]
                         {
-                            { 0, 1, 1 },
-                            { 1, 1, 0 }
+                            { 0, 7, 7 },
+                            { 7, 7, 0 }
                         }
                     }
                 };
