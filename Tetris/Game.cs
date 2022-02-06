@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Tetris
 {
+
     public partial class Game : Form
     {
         Shape currentShape;
         Shape nextShape;
         Timer timer = new Timer();
         System.Media.SoundPlayer sp;
-        public Game()
+        char[] KeysArr;
+        public Game(char[] keys)
         {
+            KeysArr = keys;
             InitializeComponent();
             playMusic("tetris");
             loadCanvas();
@@ -25,7 +29,7 @@ namespace Tetris
 
             this.KeyDown += Form1_KeyDown;
         }
-
+        
         Bitmap canvasBitmap;
         Graphics canvasGraphics;
         Pen pen = new Pen(Color.Black, 3);
@@ -211,38 +215,34 @@ namespace Tetris
         
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            
             var verticalMove = 0;
             var horizontalMove = 0;
-
+            if ( (char)e.KeyCode == char.ToUpper(KeysArr[0]))
+            {
+                verticalMove--;
+            } else if ((char)e.KeyCode == char.ToUpper(KeysArr[1])) 
+            {
+                verticalMove++;
+            }
+            else if ((char)e.KeyCode == char.ToUpper(KeysArr[2]))
+            {
+                horizontalMove++;
+            }
+            else if ((char)e.KeyCode == char.ToUpper(KeysArr[3]))
+            {
+                horizontalMove = canvasHeight - currentY - currentShape.Height;
+            }
+            else if ((char)e.KeyCode == char.ToUpper(KeysArr[4]))
+            {
+                currentShape.turn();
+            }
+            else
+            {
+                return;
+            }
             // calculate the vertical and horizontal move values
             // based on the key pressed
-            switch (e.KeyCode)
-            {
-                // move shape left
-                case Keys.Left:
-                    verticalMove--;
-                    break;
-                
-                // move shape right
-                case Keys.Right:
-                    verticalMove++;
-                    break;
-
-                // move shape down faster
-                case Keys.Down:
-                    horizontalMove++;
-                    break;
-                case Keys.Space:
-                    horizontalMove = canvasHeight-currentY-currentShape.Height;
-                    break;
-
-                // rotate the shape clockwise
-                case Keys.Up:
-                    currentShape.turn();
-                    break;
-                default:
-                    return;
-            }
 
             var isMoveSuccess = moveShapeIfPossible(horizontalMove, verticalMove);
 

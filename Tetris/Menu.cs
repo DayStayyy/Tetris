@@ -12,11 +12,13 @@ namespace Tetris
 {
     public partial class Menu : Form
     {
+        public char[] keysArr { get; set; }
         String[] arrMusic = new String[] { "tetris", "tetrisFast", "tetrisMetal", "rock" };
         public Menu()
         {
 
             InitializeComponent();
+            keysArr = new char[] { (char)Keys.Left, (char)Keys.Right, (char)Keys.Down, (char)Keys.Space, (char)Keys.Up };
             Random rnd = new Random();
             int number = rnd.Next(0, 4);
             System.Media.SoundPlayer sp = new System.Media.SoundPlayer($@"..\..\src\{arrMusic[number]}.wav");
@@ -27,14 +29,14 @@ namespace Tetris
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Game obj1 = new Game();
+            Game obj1 = new Game(keysArr);
             obj1.Show();
             this.Hide();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Option obj2 = new Option();
+            Option obj2 = new Option(this);
             obj2.Show();
             
         }
