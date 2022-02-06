@@ -52,6 +52,18 @@
     <Compile Include="Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopUpScore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpScore.Designer.cs">
+      <DependentUpon>PopUpScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionInGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionInGame.Designer.cs">
+      <DependentUpon>OptionInGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Option.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +82,12 @@
     <Compile Include="ShapesHandler.cs" />
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUpScore.resx">
+      <DependentUpon>PopUpScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionInGame.resx">
+      <DependentUpon>OptionInGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Option.resx">
       <DependentUpon>Option.cs</DependentUpon>

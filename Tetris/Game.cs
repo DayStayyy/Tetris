@@ -12,10 +12,11 @@ namespace Tetris
         Shape nextShape;
         Timer timer = new Timer();
         System.Media.SoundPlayer sp;
-        char[] KeysArr;
+        public int score { get; set; }
+        public char[] keysArr { get; set; }
         public Game(char[] keys)
         {
-            KeysArr = keys;
+            keysArr = keys;
             InitializeComponent();
             playMusic("tetris");
             loadCanvas();
@@ -130,6 +131,7 @@ namespace Tetris
                 sp.Stop();
                 MessageBox.Show("Game Over");
                 this.Close();
+                Application.Restart();
                 return true;
             }
             return false;
@@ -218,24 +220,30 @@ namespace Tetris
             
             var verticalMove = 0;
             var horizontalMove = 0;
-            if ( (char)e.KeyCode == char.ToUpper(KeysArr[0]))
+            if ( (char)e.KeyCode == char.ToUpper(keysArr[0]))
             {
                 verticalMove--;
-            } else if ((char)e.KeyCode == char.ToUpper(KeysArr[1])) 
+            } else if ((char)e.KeyCode == char.ToUpper(keysArr[1])) 
             {
                 verticalMove++;
             }
-            else if ((char)e.KeyCode == char.ToUpper(KeysArr[2]))
+            else if ((char)e.KeyCode == char.ToUpper(keysArr[2]))
             {
                 horizontalMove++;
             }
-            else if ((char)e.KeyCode == char.ToUpper(KeysArr[3]))
+            else if ((char)e.KeyCode == char.ToUpper(keysArr[3]))
             {
                 horizontalMove = canvasHeight - currentY - currentShape.Height;
             }
-            else if ((char)e.KeyCode == char.ToUpper(KeysArr[4]))
+            else if ((char)e.KeyCode == char.ToUpper(keysArr[4]))
             {
                 currentShape.turn();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                OptionInGame option = new OptionInGame(this);
+                option.ShowDialog();
+
             }
             else
             {
@@ -252,7 +260,7 @@ namespace Tetris
                 currentShape.rollback();
         }
 
-        int score;
+        
         int indexMusic = 0;
         String[] arrMusic = new String[] {"tetris","tetrisFast","tetrisMetal","rock"};
         public void clearFilledRowsAndUpdateScore()
@@ -271,22 +279,8 @@ namespace Tetris
                 {
                     // update score and level values and labels
                     score+=10;
-                    if(score/100 != indexMusic && score / 100 < 4)
-                    {
-                        indexMusic = score / 100;
-                        sp.Stop();
-                        playMusic(arrMusic[indexMusic]);
-
-                    }
-                    label1.Text = "Score: " + score;
+                    updateScore();
                     // increase the speed 
-                    if(timer.Interval - 10 <= 0)
-                    {
-                        timer.Interval = 1;
-                    } else
-                    {
-                     timer.Interval -= 10;
-                    }
                     
 
                     // update the dot array based on the check
@@ -316,6 +310,26 @@ namespace Tetris
             }
 
             pictureBox1.Image = canvasBitmap;
+        }
+
+        public void updateScore()
+        {
+            if (score / 100 != indexMusic && score / 100 < 4)
+            {
+                indexMusic = score / 100;
+                sp.Stop();
+                playMusic(arrMusic[indexMusic]);
+
+            }
+            label1.Text = "Score: " + score;
+            if (500 - score <= 0)
+            {
+                timer.Interval = 1;
+            }
+            else
+            {
+                timer.Interval = 500 - score;
+            }
         }
         private void playMusic(String name) 
         {
@@ -355,19 +369,5 @@ namespace Tetris
             return shape;
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Game_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
