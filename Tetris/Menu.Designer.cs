@@ -32,6 +32,7 @@
             this.PlayButton = new System.Windows.Forms.Button();
             this.Option = new System.Windows.Forms.Button();
             this.Quit = new System.Windows.Forms.Button();
+            this.Tuto = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PlayButton
@@ -74,6 +75,20 @@
             this.Quit.UseVisualStyleBackColor = true;
             this.Quit.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // Tuto
+            // 
+            this.Tuto.BackColor = System.Drawing.Color.Transparent;
+            this.Tuto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Tuto.BackgroundImage")));
+            this.Tuto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Tuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Tuto.Location = new System.Drawing.Point(203, 281);
+            this.Tuto.Name = "Tuto";
+            this.Tuto.Size = new System.Drawing.Size(99, 31);
+            this.Tuto.TabIndex = 3;
+            this.Tuto.Text = "Tuto";
+            this.Tuto.UseVisualStyleBackColor = false;
+            this.Tuto.Click += new System.EventHandler(this.Tuto_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -81,9 +96,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(665, 433);
+            this.Controls.Add(this.Tuto);
             this.Controls.Add(this.Quit);
             this.Controls.Add(this.Option);
             this.Controls.Add(this.PlayButton);
+            this.DoubleBuffered = true;
             this.Name = "Menu";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Menu_Load);
@@ -96,6 +113,7 @@
         private System.Windows.Forms.Button PlayButton;
         private System.Windows.Forms.Button Option;
         private System.Windows.Forms.Button Quit;
+        private System.Windows.Forms.Button Tuto;
     }
 }
 

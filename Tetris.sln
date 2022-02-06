@@ -8,13 +8,25 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Tetris|Any CPU = Tetris|Any CPU
+		Tetris|x64 = Tetris|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Debug|x64.ActiveCfg = Debug|x64
+		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Debug|x64.Build.0 = Debug|x64
 		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Release|x64.ActiveCfg = Release|x64
+		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Release|x64.Build.0 = Release|x64
+		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Tetris|Any CPU.ActiveCfg = Tetris|Any CPU
+		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Tetris|Any CPU.Build.0 = Tetris|Any CPU
+		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Tetris|x64.ActiveCfg = Debug|Any CPU
+		{816C5B01-2C06-4639-A1F3-C5FBA0A2E0D8}.Tetris|x64.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

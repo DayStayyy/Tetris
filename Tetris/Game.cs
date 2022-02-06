@@ -339,7 +339,7 @@ namespace Tetris
         }
         private void playMusic(String name) 
         {
-            sp = new System.Media.SoundPlayer($@"..\..\src\{name}.wav");
+            sp = new System.Media.SoundPlayer($@"..\..\..\src\{name}.wav");
             sp.PlayLooping();
         }
 

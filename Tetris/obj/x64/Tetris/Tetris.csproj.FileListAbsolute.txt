@@ -1,0 +1,14 @@
+C:\Users\adrie\Cours\Tetris\A\Tetris\bin\x64\Tetris\Tetris.exe.config
+C:\Users\adrie\Cours\Tetris\A\Tetris\bin\x64\Tetris\Tetris.exe
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.csproj.SuggestedBindingRedirects.cache
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.Game.resources
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.PopUpScore.resources
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.OptionInGame.resources
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.Option.resources
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.Menu.resources
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.Properties.Resources.resources
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.csproj.GenerateResource.cache
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.csproj.CoreCompileInputs.cache
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.exe
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.csproj.AssemblyReference.cache
+C:\Users\adrie\Cours\Tetris\A\Tetris\obj\x64\Tetris\Tetris.Tuto.resources

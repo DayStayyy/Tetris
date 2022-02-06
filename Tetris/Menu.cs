@@ -21,7 +21,7 @@ namespace Tetris
             keysArr = new char[] { (char)Keys.Left, (char)Keys.Right, (char)Keys.Down, (char)Keys.Space, (char)Keys.Up };
             Random rnd = new Random();
             int number = rnd.Next(0, 4);
-            System.Media.SoundPlayer sp = new System.Media.SoundPlayer($@"..\..\src\{arrMusic[number]}.wav");
+            System.Media.SoundPlayer sp = new System.Media.SoundPlayer($@"..\..\..\src\{arrMusic[number]}.wav");
             sp.PlayLooping();
 
 
@@ -49,6 +49,12 @@ namespace Tetris
         private void Menu_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Tuto_Click(object sender, EventArgs e)
+        {
+            Tuto tuto = new Tuto();
+            tuto.ShowDialog();
         }
     }
 }
