@@ -123,15 +123,19 @@ namespace Tetris
             }
         }
 
+        public void gameOver()
+        {
+            timer.Stop();
+            sp.Stop();
+            MessageBox.Show("Game Over");
+            this.Close();
+            Application.Restart();
+        }
         private bool checkIfGameOver()
         {
             if (currentY < 0)
             {
-                timer.Stop();
-                sp.Stop();
-                MessageBox.Show("Game Over");
-                this.Close();
-                Application.Restart();
+                gameOver();
                 return true;
             }
             return false;
