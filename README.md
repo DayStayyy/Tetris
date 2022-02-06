@@ -6,7 +6,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-#### This project is a custom tetris made during our classes.
+### This project is a custom tetris made during our classes.
 ![](https://i.imgur.com/msW1zAL.gif)
 
 ### Built With
