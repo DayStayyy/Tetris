@@ -18,6 +18,7 @@ namespace Tetris
         {
             keysArr = keys;
             InitializeComponent();
+            this.ControlBox = false;
             playMusic("tetris");
             loadCanvas();
 
