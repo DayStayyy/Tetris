@@ -242,7 +242,9 @@ namespace Tetris
             else if (e.KeyCode == Keys.Escape)
             {
                 OptionInGame option = new OptionInGame(this);
+                timer.Stop();
                 option.ShowDialog();
+                timer.Start();
 
             }
             else
