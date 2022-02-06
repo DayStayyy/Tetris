@@ -82,7 +82,9 @@ namespace Tetris
         Graphics workingGraphics;
         private void Timer_Tick(object sender, EventArgs e)
         {
-            label2.Text = $"Timer : {DateTime.Now.Subtract(startTime).ToString("ss")} sec";
+            TimeSpan difference = DateTime.Now.Subtract(startTime);
+            label2.Text = $"Timer : {difference.Minutes}:{difference.Seconds} sec";
+            
             var isMoveSuccess = moveShapeIfPossible(moveDown: 1);
             // if shape reached bottom or touched any other shapes
             if (!isMoveSuccess)
@@ -269,7 +271,7 @@ namespace Tetris
                 {
                     // update score and level values and labels
                     score+=10;
-                    if(score/125 != indexMusic && score / 125 < 4)
+                    if(score/100 != indexMusic && score / 100 < 4)
                     {
                         indexMusic = score / 100;
                         sp.Stop();
@@ -278,7 +280,7 @@ namespace Tetris
                     }
                     label1.Text = "Score: " + score;
                     // increase the speed 
-                    if(timer.Interval - score <= 0)
+                    if(timer.Interval - 10 <= 0)
                     {
                         timer.Interval = 1;
                     } else

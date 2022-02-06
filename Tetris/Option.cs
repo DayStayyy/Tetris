@@ -15,11 +15,23 @@ namespace Tetris
         public Option()
         {
             InitializeComponent();
+            // Create a TextBox control.
+            TextBox tb = new TextBox();
+            this.Controls.Add(tb);
+            tb.KeyPress += new KeyPressEventHandler(keypressed);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void keypressed(Object o, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
